@@ -1,45 +1,52 @@
 import streamlit as st
 
 # Set page config
-st.set_page_config(page_title="IPL Player Type Selector", layout="centered")
+st.set_page_config(page_title="IPL Player Selector", layout="centered")
 
-# Custom background and styling
-page_bg = """
+# Dark theme styling
+dark_bg = """
 <style>
 body {
-    background: linear-gradient(to right, #dbeafe, #f0fdf4);
+    background: linear-gradient(to right, #0f172a, #1e293b);
+    color: #f1f5f9;
     font-family: 'Segoe UI', sans-serif;
 }
 .stApp {
-    background-color: #f9fafb;
+    background-color: #0f172a;
 }
 h1 {
-    color: #1e3a8a;
+    color: #38bdf8;
 }
 .stSelectbox label {
     font-weight: bold;
-    color: #1e40af;
+    color: #facc15;
 }
 </style>
 """
-st.markdown(page_bg, unsafe_allow_html=True)
+st.markdown(dark_bg, unsafe_allow_html=True)
 
-# Title and instructions
-st.title("🏏 IPL Player Type Selector")
-st.markdown("Choose a player type from the dropdown below to begin your analysis or prediction.")
+# Title
+st.title("🏏 IPL Player Selector")
+st.markdown("Choose a **Type** and **Team** from the dropdowns below.")
 
-# Unique player types extracted from your list
+# Dropdown for Type
 player_types = sorted(set([
     "All-Rounder", "Bowler", "Batter", "Wicket-Keeper"
 ]))
-
-# Dropdown for Type
 selected_type = st.selectbox("Type", player_types)
 
+# Dropdown for Team
+teams = sorted(set([
+    "Chennai Super Kings", "Delhi Capitals", "Gujarat Titans",
+    "Lucknow Super Giants", "Mumbai Indians", "Punjab Kings",
+    "Royal Challengers Bangalore", "Rajasthan Royals",
+    "Sunrisers Hyderabad", "Unsold"
+]))
+selected_team = st.selectbox("Team", teams)
+
 # Display selection
-st.success(f"You selected: **{selected_type}**")
+st.success(f"You selected: **{selected_type}** from **{selected_team}**")
 
 # Footer
 st.markdown("---")
-st.caption("Designed by Miduna 🌟 | Streamlit Frontend")
-
+st.caption("Dark Mode IPL Selector 🌌 | Designed by Miduna")
